@@ -1,0 +1,62 @@
+:root{font-family:"Segoe UI",Tahoma,Arial,sans-serif;color:#213e34;background:#f5f6f2;font-synthesis:none;--forest:#183e32;--line:#dfe5dc}
+*{box-sizing:border-box}
+body{margin:0;min-width:280px;height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,#viewport:focus-visible{outline:3px solid #bd9857;outline-offset:3px}
+button:disabled{cursor:wait;opacity:.65}[hidden]{display:none!important}
+svg.icon{width:21px;height:21px;flex:none;stroke-width:1.7}button svg{pointer-events:none}
+.app-header{display:flex;flex:none;align-items:center;justify-content:space-between;gap:16px;padding:10px 20px;background:#fff;border-bottom:1px solid #edf0e9}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand-mark{width:42px;height:42px;border-radius:14px;background:var(--forest);color:#e0c58c;display:grid;place-items:center;flex:none}
+.brand-mark svg{width:27px;height:27px}
+h1{margin:0;font-size:20px;line-height:1.6;font-weight:700;letter-spacing:-.4px}
+.header-actions{display:flex;gap:8px;flex:none}
+.button,.icon-button{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:12px;transition:background .15s,box-shadow .15s;color:var(--forest);background:transparent}
+.button{padding:10px 16px;font-size:13px;font-weight:600;white-space:nowrap}
+.primary{background:var(--forest);color:#fff}.primary:hover{background:#285645}
+.secondary{background:#f2f4ee;border:1px solid #e4e8de}.secondary:hover{background:#e6ece1}
+.icon-button{width:44px;min-width:44px;padding:9px}.icon-button:hover{background:#e9eee5}
+.workspace{position:relative;flex:1;min-height:0;margin:0}
+#viewport{height:100%;position:relative;background:#e4eae0;overflow:hidden;direction:ltr;touch-action:none;cursor:grab;overscroll-behavior:contain}
+#viewport.dragging{cursor:grabbing}
+#paper{position:absolute;left:0;top:0;width:2000px;height:3000px;transform-origin:0 0;will-change:transform;box-shadow:0 12px 60px #1c322c2a;user-select:none;-webkit-user-select:none;opacity:0}
+#viewport.ready #paper{opacity:1}
+#decoration,#tree{position:absolute;inset:0;width:100%;height:100%;display:block}
+#decoration{pointer-events:none;object-fit:contain}#tree{overflow:visible}
+#tree .person{cursor:pointer}#tree .person text{pointer-events:none}
+#tree .person.is-selected .plate{stroke:#fff5a6;stroke-width:6}#tree .person.is-selected text{font-weight:700}
+.loading-state{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;color:#5e735b;font-size:13px}
+.loading-state svg{animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.viewer-tools{position:absolute;top:50%;left:12px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px;background:#fffffff5;border:1px solid #dce4d5;border-radius:17px;box-shadow:0 6px 24px #1a392a18;direction:ltr}
+.viewer-tools output{min-width:44px;text-align:center;font-size:12px;color:#63705f;font-variant-numeric:tabular-nums;direction:ltr;padding:5px 0}
+.viewer-tools .icon-button{border-radius:11px}.tool-separator{height:1px;width:22px;background:#e5e9df;margin:5px 0}
+.fit-button{padding:9px;min-width:44px}.fit-button span{display:none}
+.eyebrow{margin:0 0 4px;color:#8b7653;font-size:11px;font-weight:600}
+.person-card{position:absolute;right:16px;bottom:16px;width:360px;max-height:60%;overflow:auto;overscroll-behavior:contain;border:1px solid #d9e0d0;border-radius:20px;background:#fffffff9;padding:20px;box-shadow:0 16px 50px #1a33262b;z-index:20;touch-action:pan-y}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.card-top .icon-button{margin:-5px -5px 0 0}
+h2{margin:0;font-size:23px;line-height:1.5}.lineage-label{font-size:10px;color:#85917f;margin:17px 0 4px}
+.person-lineage{font-size:15px;line-height:1.95;margin:0;color:#304e3d;overflow-wrap:anywhere}
+.notice{position:fixed;z-index:60;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);padding:12px 18px;max-width:calc(100% - 32px);border-radius:13px;background:#183e32;color:#fff;font-size:12px;box-shadow:0 8px 28px #20382d22}
+.is-touch .viewer-tools{display:none}
+@media(max-width:600px){
+ .app-header{padding:8px 10px;gap:8px;padding-top:max(8px,env(safe-area-inset-top));padding-right:max(10px,env(safe-area-inset-right));padding-left:max(10px,env(safe-area-inset-left))}
+ .brand-mark{display:none}h1{font-size:14px;line-height:1.6;letter-spacing:-.2px}
+ .header-actions{gap:4px}.header-actions .button{padding:10px;min-width:44px}.header-actions .button span{display:none}
+ .viewer-tools{display:none}
+ .person-card{right:10px;left:10px;bottom:max(10px,env(safe-area-inset-bottom));width:auto;max-height:min(45dvh,330px);padding:17px;border-radius:18px}
+ .person-lineage{font-size:14px}h2{font-size:21px}.notice{text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-height:500px) and (orientation:landscape){
+ .app-header{padding:5px 12px;gap:10px}.brand-mark{display:none}h1{font-size:14px}.header-actions .button{padding:8px 10px;min-height:40px}.header-actions .button span{display:none}
+}
+@media print{
+ @page{size:420mm 594mm;margin:6mm}
+ html,body{margin:0!important;padding:0!important;width:100%!important;height:100%!important;min-height:0!important;background:#fff;display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .app-header,.viewer-tools,.person-card,.notice,.loading-state{display:none!important}
+ .workspace{position:fixed!important;inset:0!important;width:auto!important;height:auto!important;margin:0!important}
+ #viewport{position:fixed!important;inset:0!important;width:auto!important;height:auto!important;margin:0!important;border:0!important;border-radius:0!important;background:#fff!important;overflow:hidden!important}
+ #paper{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;transform:none!important;opacity:1!important;box-shadow:none!important}
+ #tree,#decoration{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important}
+ #tree .person.is-selected .plate,#tree .person:focus .plate,#tree .person:hover .plate{stroke:transparent!important;stroke-width:0!important}
+}
